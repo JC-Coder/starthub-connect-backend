@@ -1,0 +1,29 @@
+// Auth 
+Login (done)
+Register (done)
+
+
+// User
+profile => (done)
+get all users => (done)
+search users (skill , name) => (done)
+update profile => (done)
+add / update profile image => (done)
+add / update cover image => (done)
+latest members 
+top members 
+success stories (later feature)
+
+// Stats
+list stats 
+
+// Admin (post feature)
+see all users (done -> same route with search users without the filter query)
+approve new user 
+delete user 
+promote user to top member
+
+
+
+/////////// Notes ......
+users without profile picture won't be visible on the website 

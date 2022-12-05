@@ -1,0 +1,58 @@
+=== Homepage
+Join today = Join our community
+view developers = view members
+Member search => skills, name
+------
+find developer you want = Statistics
+developers = members
+online = stack
+latest members 
+top developers = top members
+success stories
+sponsors
+
+
+===== Log in 
+ email
+password
+register 
+
+====== register 
+username 
+email
+password - > confirm password 
+name 
+phone number 
+gender 
+
+
+======== members 
+== member search 
+skill, name 
+
+=== members 
+all design stays except sidebar 
+
+===== profile 
+== top 
+cover image 
+profile image 
+name
+
+
+== profile tab 
+->profile info 
+name
+username 
+email 
+phone number 
+gender  
+
+-> more info 
+bio
+skills 
+facebook 
+Twitter 
+Instagram 
+linkdln 
+website
