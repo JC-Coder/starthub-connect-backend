@@ -24,11 +24,8 @@ export const typeOrmModuleOptions: TypeOrmModuleOptions = {
   autoLoadEntities: true,
 };
 
-
-
-
 /**
- * Config for migrations 
+ * Config for migrations
  */
 
 const configService = new ConfigService();
@@ -41,5 +38,5 @@ export default new DataSource({
   password: configService.get('DB_PASSWORD'),
   database: configService.get('DB_NAME'),
   entities: [UserEntity],
-  migrations: [User1670408836840]
+  migrations: [User1670408836840],
 });

@@ -10,9 +10,9 @@ search users (skill , name) => (done)
 update profile => (done)
 add / update profile image => (done)
 add / update cover image => (done)
-latest members 
-top members 
-success stories (later feature)
+latest members => (done)
+top members => (done)
+success stories => (done)
 
 // Stats
 list stats 

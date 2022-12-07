@@ -40,7 +40,7 @@ export class UserController {
   async findByUniqueId(
     @Query('search_string') searchString: string,
     @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
-    @Query('limit', new DefaultValuePipe(1000), ParseIntPipe) limit: number,
+    @Query('limit', new DefaultValuePipe(50), ParseIntPipe) limit: number,
   ) {
     if (searchString) {
       return await this.userService.findByUniqueIdOrName(searchString, {
@@ -139,7 +139,24 @@ export class UserController {
    * get latest members
    */
   @Get('latest-members')
-  async latestMembers(): Promise<UserEntity[]> {
+  async latestMembers(): Promise<any> {
     return await this.userService.latestMembers();
+  }
+
+  /**
+   * get top members
+   * @returns
+   */
+  @Get('top-members')
+  async topMembers() {
+    return await this.userService.topMembers();
+  }
+
+  /**
+   * Get users success stories
+   */
+  @Get('success-stories')
+  async successStories() {
+    return await this.userService.successStories();
   }
 }

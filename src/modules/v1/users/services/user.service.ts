@@ -1,12 +1,17 @@
 import {
   BadRequestException,
+  HttpException,
   Injectable,
   InternalServerErrorException,
   Logger,
   UnauthorizedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { IPaginationOptions, paginate } from 'nestjs-typeorm-paginate';
+import {
+  IPaginationOptions,
+  paginate,
+  Pagination,
+} from 'nestjs-typeorm-paginate';
 import { Helpers } from 'src/helpers';
 import {
   ImageValidatorMessages,
@@ -69,9 +74,11 @@ export class UserService {
     return await paginate<UserEntity>(result, options);
   }
 
-  /*
-  find all user paginated
-  */
+  /**
+   * find all user paginated
+   * @param options
+   * @returns
+   */
   async findAllPaginated(options: IPaginationOptions) {
     let result = this.userRepository.createQueryBuilder('u');
 
@@ -159,7 +166,7 @@ export class UserService {
     }
 
     // delete user previous image if exist
-    if (user.profile_image) {
+    if (user.cover_image) {
       Helpers.deleteImage(user.cover_image);
     }
 
@@ -229,9 +236,56 @@ export class UserService {
   /**
    * get latest members
    */
-  async latestMembers(): Promise<UserEntity[]> {
-    let result = await this.userRepository.find();
+  async latestMembers(): Promise<any> {
+    const options: IPaginationOptions = {
+      page: 1,
+      limit: 20,
+    };
+    let result = this.userRepository
+      .createQueryBuilder('u')
+      .orderBy('u.created_at', 'DESC');
 
-    return result.splice(0, 7);
+    return await paginate(result, options);
+  }
+
+  /**
+   * get top members
+   */
+  async topMembers(): Promise<any> {
+    const options: IPaginationOptions = {
+      page: 1,
+      limit: 12,
+    };
+    let result = this.userRepository
+      .createQueryBuilder('u')
+      .where('u.is_top_member = true');
+
+    return await paginate(result, options);
+  }
+
+  /**
+   * Get users success stories
+   */
+  async successStories() {
+    const options: IPaginationOptions = {
+      page: 1,
+      limit: 10,
+    };
+
+    const rand = Math.round(Math.random());
+
+    try {
+      let result = this.userRepository
+        .createQueryBuilder('u')
+        .where(`u.success_story != null or u.success_story != '' `)
+
+      rand == 0 ? result.orderBy('u.created_at', 'ASC') : result.orderBy('u.created_at', 'DESC');
+
+      return await paginate(result, options);
+    } catch (err) {
+      if (err) {
+        throw new InternalServerErrorException(err.message);
+      }
+    }
   }
 }
