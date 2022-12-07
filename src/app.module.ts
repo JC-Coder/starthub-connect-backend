@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { typeOrmConfig } from './config/typeOrm.config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { MailerModule } from '@nestjs-modules/mailer';
@@ -11,7 +10,7 @@ import { AuthModule } from './modules/v1/auth/auth.module';
 import { UserController } from './modules/v1/users/controllers/user.controller';
 import { UserModule } from './modules/v1/users/user.module';
 import { MailModule } from './modules/v1/mail/mail.module';
-import { typeOrmStagingConfig } from './config/typeOrm-staging.config';
+import { typeOrmModuleOptions } from './config/typeOrm.config';
 
 config();
 
@@ -32,9 +31,7 @@ config();
       },
     }),
     ConfigModule.forRoot({ isGlobal: true }),
-    TypeOrmModule.forRootAsync({
-      useFactory: () => typeOrmConfig, // change to typeormConfig when working offline with mysql
-    }),
+    TypeOrmModule.forRoot(typeOrmModuleOptions),
     AuthModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'uploads'),

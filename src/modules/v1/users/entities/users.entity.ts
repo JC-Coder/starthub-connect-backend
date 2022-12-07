@@ -1,5 +1,5 @@
 import { Exclude } from 'class-transformer';
-import { GenderEnum } from 'src/enums/gender.enum';
+import { GenderEnum } from './../../../../enums/gender.enum';
 import {
   Column,
   CreateDateColumn,
@@ -73,7 +73,7 @@ export class UserEntity {
   @Column({ nullable: true })
   website_url: string;
 
-  @Column({default: false})
+  @Column({ default: false })
   is_top_member: boolean;
 
   @CreateDateColumn()
