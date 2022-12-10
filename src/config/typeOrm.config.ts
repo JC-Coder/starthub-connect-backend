@@ -12,18 +12,18 @@ config();
  * Config for nestjs db connection
  */
 
-export const typeOrmModuleOptions: TypeOrmModuleOptions = {
-  type: 'postgres',
-  host: process.env.DB_HOST,
-  port: +process.env.DB_PORT,
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  /* Note : it is unsafe to use synchronize: true for schema synchronization
-    on production once you get data in your database. */
-  // synchronize: true,
-  autoLoadEntities: true,
-};
+// export const typeOrmModuleOptions: TypeOrmModuleOptions = {
+//   type: 'postgres',
+//   host: process.env.DB_HOST,
+//   port: +process.env.DB_PORT,
+//   username: process.env.DB_USERNAME,
+//   password: process.env.DB_PASSWORD,
+//   database: process.env.DB_NAME,
+//   /* Note : it is unsafe to use synchronize: true for schema synchronization
+//     on production once you get data in your database. */
+//   // synchronize: true,
+//   autoLoadEntities: true,
+// };
 
 /**
  * Config for migrations
