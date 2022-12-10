@@ -33,11 +33,12 @@ const configService = new ConfigService();
 
 export default new DataSource({
   type: 'postgres',
-  host: configService.get('DB_HOST'),
-  port: configService.get('DB_PORT'),
-  username: configService.get('DB_USERNAME'),
-  password: configService.get('DB_PASSWORD'),
-  database: configService.get('DB_NAME'),
+  // host: configService.get('DB_HOST'),
+  // port: configService.get('DB_PORT'),
+  // username: configService.get('DB_USERNAME'),
+  // password: configService.get('DB_PASSWORD'),
+  // database: configService.get('DB_NAME'),
+  url: process.env.DATABASE_URL,
   entities: [UserEntity],
   migrations: [User1670408836840,experienceYearCount1670668096450],
 });
