@@ -8,5 +8,5 @@ export const typeOrmStagingConfig: TypeOrmModuleOptions = {
   url: process.env.DATABASE_URL,
   autoLoadEntities: true,
   // synchronize: true,
-  // dropSchema: true
+  dropSchema: true
 };
