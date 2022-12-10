@@ -269,7 +269,7 @@ export class UserService {
   async successStories() {
     const options: IPaginationOptions = {
       page: 1,
-      limit: 10,
+      limit: 12,
     };
 
     const rand = Math.round(Math.random());

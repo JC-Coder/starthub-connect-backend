@@ -9,6 +9,8 @@ export default setSeederFactory(UserEntity, (faker) => {
     user.password = faker.internet.password(30);
     user.email = faker.internet.email(user.firstname,user.lastname);
     user.phone_number = faker.phone.number('string');
+    user.is_top_member = true;
+    user.profile_image = faker.internet.avatar();
 
     return user;
 })

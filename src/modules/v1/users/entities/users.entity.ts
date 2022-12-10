@@ -76,6 +76,9 @@ export class UserEntity {
   @Column({ default: false })
   is_top_member: boolean;
 
+  @Column({ nullable: true })
+  experience_year_count: number;
+
   @CreateDateColumn()
   created_at: Date;
 

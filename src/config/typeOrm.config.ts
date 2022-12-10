@@ -4,6 +4,7 @@ import { config } from 'dotenv';
 import { UserEntity } from './../modules/v1/users/entities/users.entity';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { User1670408836840 } from './../migrations/1670408836840-User';
+import { experienceYearCount1670668096450 } from './../migrations/1670668096450-experience_year_count';
 
 config();
 
@@ -38,5 +39,5 @@ export default new DataSource({
   password: configService.get('DB_PASSWORD'),
   database: configService.get('DB_NAME'),
   entities: [UserEntity],
-  migrations: [User1670408836840],
+  migrations: [User1670408836840,experienceYearCount1670668096450],
 });

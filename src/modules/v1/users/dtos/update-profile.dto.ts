@@ -16,10 +16,6 @@ export class UpdateProfileDto {
 
   @IsString()
   @IsOptional()
-  email: string;
-
-  @IsString()
-  @IsOptional()
   phone_number: string;
 
   @IsOptional()
@@ -63,4 +59,8 @@ export class UpdateProfileDto {
   @IsString()
   @IsOptional()
   website_url: string;
+
+  @IsString()
+  @IsOptional()
+  experience_year_count: number;
 }
