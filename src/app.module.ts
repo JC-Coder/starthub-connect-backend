@@ -11,6 +11,7 @@ import { UserController } from './modules/v1/users/controllers/user.controller';
 import { UserModule } from './modules/v1/users/user.module';
 import { MailModule } from './modules/v1/mail/mail.module';
 import { typeOrmModuleOptions } from './config/typeOrm.config';
+import { typeOrmStagingConfig } from './config/typeOrm-staging.config';
 
 config();
 
@@ -31,7 +32,7 @@ config();
       },
     }),
     ConfigModule.forRoot({ isGlobal: true }),
-    TypeOrmModule.forRoot(typeOrmModuleOptions),
+    TypeOrmModule.forRoot(typeOrmStagingConfig),
     AuthModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'uploads'),
