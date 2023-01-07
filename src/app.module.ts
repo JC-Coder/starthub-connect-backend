@@ -31,7 +31,7 @@ config();
       },
     }),
     ConfigModule.forRoot({ isGlobal: true }),
-    TypeOrmModule.forRoot(typeOrmStagingConfig),
+    TypeOrmModule.forRoot(typeOrmStagingConfig), // change to typeOrmStaging before deployment
     AuthModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'uploads'),

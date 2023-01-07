@@ -25,6 +25,7 @@ export const typeOrmModuleOptions: TypeOrmModuleOptions = {
   autoLoadEntities: true,
 };
 
+
 /**
  * Config for migrations
  */

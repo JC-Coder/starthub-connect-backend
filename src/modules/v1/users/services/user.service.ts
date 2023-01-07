@@ -4,6 +4,7 @@ import {
   Injectable,
   InternalServerErrorException,
   Logger,
+  NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -83,6 +84,19 @@ export class UserService {
     let result = this.userRepository.createQueryBuilder('u');
 
     return await paginate<UserEntity>(result, options);
+  }
+
+  /**
+   * get user by id
+   */
+  async getUser(id: number){
+    let user =  await this.findByIdQuery(id);
+
+    if(!user){
+      throw new NotFoundException("No user found with supplied id ")
+    }
+
+    return user;
   }
 
   /**
@@ -277,9 +291,11 @@ export class UserService {
     try {
       let result = this.userRepository
         .createQueryBuilder('u')
-        .where(`u.success_story != null or u.success_story != '' `)
+        .where(`u.success_story != null or u.success_story != '' `);
 
-      rand == 0 ? result.orderBy('u.created_at', 'ASC') : result.orderBy('u.created_at', 'DESC');
+      rand == 0
+        ? result.orderBy('u.created_at', 'ASC')
+        : result.orderBy('u.created_at', 'DESC');
 
       return await paginate(result, options);
     } catch (err) {

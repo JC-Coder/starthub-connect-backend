@@ -3,6 +3,7 @@ import {
   Controller,
   DefaultValuePipe,
   Get,
+  Param,
   ParseIntPipe,
   Patch,
   Post,
@@ -50,6 +51,14 @@ export class UserController {
     } else {
       return await this.userService.findAllPaginated({ page, limit });
     }
+  }
+
+  /**
+   * Get user by id
+   */
+  @Get('find/:userId')
+  async getUser(@Param('userId', ParseIntPipe) id: number){
+    return await this.userService.getUser(id);
   }
 
   /**
